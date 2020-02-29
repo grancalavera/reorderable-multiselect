@@ -13,10 +13,26 @@ html,
 }
 
 #root {
-  display: grid
+  display: grid;
 }
 
 .app-layout {
   margin: auto;
   width: 90vw;
+}
+
+.app-overlay-content {
+  display: grid;
+}
+
+.app-reorder {
+  margin: auto;
+}
+
+.app-reorder-handle {
+  margin-right: 0.5rem;
+}
+
+.app-days-select {
+  margin-bottom: 0.5rem;
 }
