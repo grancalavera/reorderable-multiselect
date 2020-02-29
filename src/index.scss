@@ -1,0 +1,22 @@
+@import "@blueprintjs/core/lib/scss/variables";
+
+body {
+  background-color: $pt-dark-app-background-color;
+}
+
+body,
+html,
+#root {
+  height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+#root {
+  display: grid
+}
+
+.app-layout {
+  margin: auto;
+  width: 90vw;
+}
