@@ -36,3 +36,7 @@ html,
 .app-days-select {
   margin-bottom: 0.5rem;
 }
+
+.app-reorderable {
+  user-select: none;
+}

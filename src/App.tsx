@@ -18,16 +18,23 @@ const itemList = countries();
 
 function App() {
   const [showReorder, setShowReorder] = useState(false);
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
+  const [reorderedSelectedItems, setReorderedSelectedItems] = useState<string[]>([]);
 
   const handleOpenReorder = useCallback(() => {
+    setReorderedSelectedItems([...selectedItems]);
     setShowReorder(true);
-  }, [setShowReorder]);
+  }, [setShowReorder, selectedItems]);
 
-  const handleCloseReorder = useCallback(() => {
-    setShowReorder(false);
-  }, [setShowReorder]);
-
-  const [selectedItems, setSelectedItems] = useState<string[]>([]);
+  const handleCloseReorder = useCallback(
+    (applyNewOrder: boolean) => {
+      if (applyNewOrder) {
+        setSelectedItems([...reorderedSelectedItems]);
+      }
+      setShowReorder(false);
+    },
+    [setShowReorder, reorderedSelectedItems]
+  );
 
   const selectItem = useCallback(
     (item: string) => {
@@ -92,12 +99,12 @@ function App() {
       }
       const startIndex = result.source.index;
       const endIndex = result.destination.index;
-      const final = [...selectedItems];
+      const final = [...reorderedSelectedItems];
       const [removed] = final.splice(startIndex, 1);
       final.splice(endIndex, 0, removed);
-      setSelectedItems(final);
+      setReorderedSelectedItems(final);
     },
-    [selectedItems, setSelectedItems]
+    [reorderedSelectedItems, setReorderedSelectedItems]
   );
 
   return (
@@ -120,7 +127,7 @@ function App() {
         />
 
         <Button
-          disabled={selectedItems.length === 0}
+          disabled={selectedItems.length < 2}
           minimal={true}
           onClick={handleOpenReorder}
         >
@@ -130,16 +137,16 @@ function App() {
       <Dialog
         isOpen={showReorder}
         canOutsideClickClose={true}
-        onClose={handleCloseReorder}
+        onClose={() => handleCloseReorder(false)}
         className={classnames("bp3-dark")}
-        title="Reorder your week"
+        title="Reorder"
       >
         <div className={Classes.DIALOG_BODY}>
           <DragDropContext onDragEnd={handleDragEnd}>
-            <Droppable droppableId="reorderedWeek">
+            <Droppable droppableId="reorder-countries">
               {provided => (
                 <div {...provided.droppableProps} ref={provided.innerRef}>
-                  {selectedItems.map((item, index) => (
+                  {reorderedSelectedItems.map((item, index) => (
                     <Draggable key={item} draggableId={item} index={index}>
                       {innerProvided => (
                         <p
@@ -147,6 +154,7 @@ function App() {
                           {...innerProvided.draggableProps}
                           {...innerProvided.dragHandleProps}
                           style={innerProvided.draggableProps.style}
+                          className="app-reorderable"
                         >
                           <Icon
                             icon="drag-handle-horizontal"
@@ -166,8 +174,9 @@ function App() {
 
         <div className={Classes.DIALOG_FOOTER}>
           <div className={Classes.DIALOG_FOOTER_ACTIONS}>
-            <Button intent={Intent.PRIMARY} onClick={handleCloseReorder}>
-              Done
+            <Button onClick={() => handleCloseReorder(false)}>Cancel</Button>
+            <Button intent={Intent.PRIMARY} onClick={() => handleCloseReorder(true)}>
+              Apply
             </Button>
           </div>
         </div>
@@ -387,7 +396,7 @@ function countries() {
     "Vietnam",
     "Yemen",
     "Zambia",
-    "Zimbabwe    ",
+    "Zimbabwe",
   ];
 }
 export default App;
