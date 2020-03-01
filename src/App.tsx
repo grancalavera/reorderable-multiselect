@@ -11,7 +11,6 @@ import {
 import { IItemRendererProps, ItemPredicate, MultiSelect } from "@blueprintjs/select";
 import React, { useCallback, useState } from "react";
 import { DragDropContext, Draggable, Droppable, DropResult } from "react-beautiful-dnd";
-import "./App.css";
 import { countries } from "./countries";
 
 function App() {
