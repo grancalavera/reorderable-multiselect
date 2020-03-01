@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/reordable-multiselect/precache-manifest.662683b0e5f0ec13f2ec1fb29f16b6b0.js"
+  "/reordable-multiselect/precache-manifest.6d49504b51104fd134b8f62ecdfb4c07.js"
 );
 
 self.addEventListener('message', (event) => {
