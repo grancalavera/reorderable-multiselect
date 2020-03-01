@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7d3632df318d0dd6f265dbbe8adb0397",
+    "revision": "5b466b53ba491dbda3efe17a85c589e4",
     "url": "/reordable-multiselect/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/reordable-multiselect/static/css/2.44c7caa8.chunk.css"
   },
   {
-    "revision": "aef4353ca0646d5cb003",
-    "url": "/reordable-multiselect/static/css/main.90c7cafc.chunk.css"
+    "revision": "bf7897074aae75cce8dc",
+    "url": "/reordable-multiselect/static/css/main.de280b96.chunk.css"
   },
   {
     "revision": "b53911e5d9501a74af81",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/reordable-multiselect/static/js/2.9a948555.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "aef4353ca0646d5cb003",
+    "revision": "bf7897074aae75cce8dc",
     "url": "/reordable-multiselect/static/js/main.c88c278e.chunk.js"
   },
   {
