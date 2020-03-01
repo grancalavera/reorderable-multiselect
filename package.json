@@ -1,6 +1,6 @@
 {
-  "name": "reordable-multiselect",
-  "version": "0.1.0",
+  "name": "reorderable-multiselect",
+  "version": "0.0.0",
   "private": true,
   "dependencies": {
     "@blueprintjs/core": "^3.24.0",
@@ -46,5 +46,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://grancalavera.github.io/reordable-multiselect"
+  "homepage": "https://grancalavera.github.io/reorderable-multiselect"
 }
