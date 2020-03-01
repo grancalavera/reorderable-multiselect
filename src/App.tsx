@@ -4,20 +4,19 @@ import {
   Classes,
   Dialog,
   Elevation,
+  Icon,
   Intent,
   MenuItem,
-  Icon,
 } from "@blueprintjs/core";
 import { IItemRendererProps, ItemPredicate, MultiSelect } from "@blueprintjs/select";
-import classnames from "classnames";
 import React, { useCallback, useState } from "react";
-import { DragDropContext, Droppable, DropResult, Draggable } from "react-beautiful-dnd";
+import { DragDropContext, Draggable, Droppable, DropResult } from "react-beautiful-dnd";
 import "./App.css";
-
-const itemList = countries();
+import { countries } from "./countries";
 
 function App() {
   const [showReorder, setShowReorder] = useState(false);
+  const [showConfirmClear, setShowConfirmClear] = useState(false);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const [reorderedSelectedItems, setReorderedSelectedItems] = useState<string[]>([]);
 
@@ -107,11 +106,20 @@ function App() {
     [reorderedSelectedItems, setReorderedSelectedItems]
   );
 
+  const handleClear = useCallback(() => setSelectedItems([]), [setSelectedItems]);
+
+  const clearButton =
+    selectedItems.length > 0 ? (
+      <Button icon="cross" minimal={true} onClick={() => setShowConfirmClear(true)} />
+    ) : (
+      undefined
+    );
+
   return (
     <>
       <Card className="app-layout" elevation={Elevation.TWO}>
         <MultiSelect<string>
-          items={itemList}
+          items={[...countries]}
           itemPredicate={filterDay}
           selectedItems={selectedItems}
           tagRenderer={tagRenderer}
@@ -119,7 +127,7 @@ function App() {
           onItemSelect={onItemSelect}
           popoverProps={{ minimal: true }}
           openOnKeyDown={true}
-          tagInputProps={{ onRemove: onRemoveTag }}
+          tagInputProps={{ onRemove: onRemoveTag, rightElement: clearButton }}
           itemsEqual={areDaysEqual}
           fill={true}
           resetOnSelect={true}
@@ -135,11 +143,37 @@ function App() {
         </Button>
       </Card>
       <Dialog
+        isOpen={showConfirmClear}
+        className="bp3-dark"
+        title="Clear Selection"
+        canOutsideClickClose={true}
+        onClose={() => setShowConfirmClear(false)}
+      >
+        <div className={Classes.DIALOG_BODY}>
+          <p>Are you sure you want to clear your selection?</p>
+        </div>
+        <div className={Classes.DIALOG_FOOTER}>
+          <div className={Classes.DIALOG_FOOTER_ACTIONS}>
+            <Button onClick={() => setShowConfirmClear(false)}>Cancel</Button>
+            <Button
+              intent={Intent.PRIMARY}
+              onClick={() => {
+                handleClear();
+                setShowConfirmClear(false);
+              }}
+            >
+              Clear Selection
+            </Button>
+          </div>
+        </div>
+      </Dialog>
+
+      <Dialog
         isOpen={showReorder}
         canOutsideClickClose={true}
         onClose={() => handleCloseReorder(false)}
-        className={classnames("bp3-dark")}
         title="Reorder"
+        className="bp3-dark"
       >
         <div className={Classes.DIALOG_BODY}>
           <DragDropContext onDragEnd={handleDragEnd}>
@@ -176,7 +210,7 @@ function App() {
           <div className={Classes.DIALOG_FOOTER_ACTIONS}>
             <Button onClick={() => handleCloseReorder(false)}>Cancel</Button>
             <Button intent={Intent.PRIMARY} onClick={() => handleCloseReorder(true)}>
-              Apply
+              Reorder
             </Button>
           </div>
         </div>
@@ -199,204 +233,4 @@ const filterDay: ItemPredicate<string> = (query, item, _index, exactMatch) => {
   }
 };
 
-function countries() {
-  return [
-    "Afghanistan",
-    "Albania",
-    "Algeria",
-    "Andorra",
-    "Angola",
-    "Antigua & Deps",
-    "Argentina",
-    "Armenia",
-    "Australia",
-    "Austria",
-    "Azerbaijan",
-    "Bahamas",
-    "Bahrain",
-    "Bangladesh",
-    "Barbados",
-    "Belarus",
-    "Belgium",
-    "Belize",
-    "Benin",
-    "Bhutan",
-    "Bolivia",
-    "Bosnia Herzegovina",
-    "Botswana",
-    "Brazil",
-    "Brunei",
-    "Bulgaria",
-    "Burkina",
-    "Burundi",
-    "Cambodia",
-    "Cameroon",
-    "Canada",
-    "Cape Verde",
-    "Central African Rep",
-    "Chad",
-    "Chile",
-    "China",
-    "Colombia",
-    "Comoros",
-    "Congo",
-    "Congo {Democratic Rep}",
-    "Costa Rica",
-    "Croatia",
-    "Cuba",
-    "Cyprus",
-    "Czech Republic",
-    "Denmark",
-    "Djibouti",
-    "Dominica",
-    "Dominican Republic",
-    "East Timor",
-    "Ecuador",
-    "Egypt",
-    "El Salvador",
-    "Equatorial Guinea",
-    "Eritrea",
-    "Estonia",
-    "Ethiopia",
-    "Fiji",
-    "Finland",
-    "France",
-    "Gabon",
-    "Gambia",
-    "Georgia",
-    "Germany",
-    "Ghana",
-    "Greece",
-    "Grenada",
-    "Guatemala",
-    "Guinea",
-    "Guinea-Bissau",
-    "Guyana",
-    "Haiti",
-    "Honduras",
-    "Hungary",
-    "Iceland",
-    "India",
-    "Indonesia",
-    "Iran",
-    "Iraq",
-    "Ireland {Republic}",
-    "Israel",
-    "Italy",
-    "Ivory Coast",
-    "Jamaica",
-    "Japan",
-    "Jordan",
-    "Kazakhstan",
-    "Kenya",
-    "Kiribati",
-    "Korea North",
-    "Korea South",
-    "Kosovo",
-    "Kuwait",
-    "Kyrgyzstan",
-    "Laos",
-    "Latvia",
-    "Lebanon",
-    "Lesotho",
-    "Liberia",
-    "Libya",
-    "Liechtenstein",
-    "Lithuania",
-    "Luxembourg",
-    "Macedonia",
-    "Madagascar",
-    "Malawi",
-    "Malaysia",
-    "Maldives",
-    "Mali",
-    "Malta",
-    "Marshall Islands",
-    "Mauritania",
-    "Mauritius",
-    "Mexico",
-    "Micronesia",
-    "Moldova",
-    "Monaco",
-    "Mongolia",
-    "Montenegro",
-    "Morocco",
-    "Mozambique",
-    "Myanmar, {Burma}",
-    "Namibia",
-    "Nauru",
-    "Nepal",
-    "Netherlands",
-    "New Zealand",
-    "Nicaragua",
-    "Niger",
-    "Nigeria",
-    "Norway",
-    "Oman",
-    "Pakistan",
-    "Palau",
-    "Panama",
-    "Papua New Guinea",
-    "Paraguay",
-    "Peru",
-    "Philippines",
-    "Poland",
-    "Portugal",
-    "Qatar",
-    "Romania",
-    "Russian Federation",
-    "Rwanda",
-    "St Kitts & Nevis",
-    "St Lucia",
-    "Saint Vincent & the Grenadines",
-    "Samoa",
-    "San Marino",
-    "Sao Tome & Principe",
-    "Saudi Arabia",
-    "Senegal",
-    "Serbia",
-    "Seychelles",
-    "Sierra Leone",
-    "Singapore",
-    "Slovakia",
-    "Slovenia",
-    "Solomon Islands",
-    "Somalia",
-    "South Africa",
-    "South Sudan",
-    "Spain",
-    "Sri Lanka",
-    "Sudan",
-    "Suriname",
-    "Swaziland",
-    "Sweden",
-    "Switzerland",
-    "Syria",
-    "Taiwan",
-    "Tajikistan",
-    "Tanzania",
-    "Thailand",
-    "Togo",
-    "Tonga",
-    "Trinidad & Tobago",
-    "Tunisia",
-    "Turkey",
-    "Turkmenistan",
-    "Tuvalu",
-    "Uganda",
-    "Ukraine",
-    "United Arab Emirates",
-    "United Kingdom",
-    "United States",
-    "Uruguay",
-    "Uzbekistan",
-    "Vanuatu",
-    "Vatican City",
-    "Venezuela",
-    "Vietnam",
-    "Yemen",
-    "Zambia",
-    "Zimbabwe",
-  ];
-}
 export default App;
