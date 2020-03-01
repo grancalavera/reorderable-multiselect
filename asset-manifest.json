@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/reordable-multiselect/static/css/main.90c7cafc.chunk.css",
+    "main.js": "/reordable-multiselect/static/js/main.c88c278e.chunk.js",
+    "main.js.map": "/reordable-multiselect/static/js/main.c88c278e.chunk.js.map",
+    "runtime-main.js": "/reordable-multiselect/static/js/runtime-main.90795a9e.js",
+    "runtime-main.js.map": "/reordable-multiselect/static/js/runtime-main.90795a9e.js.map",
+    "static/css/2.44c7caa8.chunk.css": "/reordable-multiselect/static/css/2.44c7caa8.chunk.css",
+    "static/js/2.9a948555.chunk.js": "/reordable-multiselect/static/js/2.9a948555.chunk.js",
+    "static/js/2.9a948555.chunk.js.map": "/reordable-multiselect/static/js/2.9a948555.chunk.js.map",
+    "index.html": "/reordable-multiselect/index.html",
+    "precache-manifest.662683b0e5f0ec13f2ec1fb29f16b6b0.js": "/reordable-multiselect/precache-manifest.662683b0e5f0ec13f2ec1fb29f16b6b0.js",
+    "service-worker.js": "/reordable-multiselect/service-worker.js",
+    "static/css/2.44c7caa8.chunk.css.map": "/reordable-multiselect/static/css/2.44c7caa8.chunk.css.map",
+    "static/css/main.90c7cafc.chunk.css.map": "/reordable-multiselect/static/css/main.90c7cafc.chunk.css.map",
+    "static/js/2.9a948555.chunk.js.LICENSE.txt": "/reordable-multiselect/static/js/2.9a948555.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/reordable-multiselect/static/media/icons-20.cef8cdbb.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.90795a9e.js",
+    "static/css/2.44c7caa8.chunk.css",
+    "static/js/2.9a948555.chunk.js",
+    "static/css/main.90c7cafc.chunk.css",
+    "static/js/main.c88c278e.chunk.js"
+  ]
+}
