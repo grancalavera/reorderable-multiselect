@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/reorderable-multiselect/static/css/main.c166ff17.chunk.css",
-    "main.js": "/reorderable-multiselect/static/js/main.169462b0.chunk.js",
-    "main.js.map": "/reorderable-multiselect/static/js/main.169462b0.chunk.js.map",
+    "main.js": "/reorderable-multiselect/static/js/main.a3425608.chunk.js",
+    "main.js.map": "/reorderable-multiselect/static/js/main.a3425608.chunk.js.map",
     "runtime-main.js": "/reorderable-multiselect/static/js/runtime-main.cac2795a.js",
     "runtime-main.js.map": "/reorderable-multiselect/static/js/runtime-main.cac2795a.js.map",
     "static/css/2.38516363.chunk.css": "/reorderable-multiselect/static/css/2.38516363.chunk.css",
-    "static/js/2.80ba5deb.chunk.js": "/reorderable-multiselect/static/js/2.80ba5deb.chunk.js",
-    "static/js/2.80ba5deb.chunk.js.map": "/reorderable-multiselect/static/js/2.80ba5deb.chunk.js.map",
+    "static/js/2.c79472dd.chunk.js": "/reorderable-multiselect/static/js/2.c79472dd.chunk.js",
+    "static/js/2.c79472dd.chunk.js.map": "/reorderable-multiselect/static/js/2.c79472dd.chunk.js.map",
     "index.html": "/reorderable-multiselect/index.html",
-    "precache-manifest.d87e699e5d64d23e89113d90b3ee3076.js": "/reorderable-multiselect/precache-manifest.d87e699e5d64d23e89113d90b3ee3076.js",
+    "precache-manifest.f13e3fdafeb455b9b6df018b6bce532b.js": "/reorderable-multiselect/precache-manifest.f13e3fdafeb455b9b6df018b6bce532b.js",
     "service-worker.js": "/reorderable-multiselect/service-worker.js",
     "static/css/2.38516363.chunk.css.map": "/reorderable-multiselect/static/css/2.38516363.chunk.css.map",
     "static/css/main.c166ff17.chunk.css.map": "/reorderable-multiselect/static/css/main.c166ff17.chunk.css.map",
-    "static/js/2.80ba5deb.chunk.js.LICENSE.txt": "/reorderable-multiselect/static/js/2.80ba5deb.chunk.js.LICENSE.txt",
+    "static/js/2.c79472dd.chunk.js.LICENSE.txt": "/reorderable-multiselect/static/js/2.c79472dd.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/reorderable-multiselect/static/media/icons-20.cef8cdbb.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.cac2795a.js",
     "static/css/2.38516363.chunk.css",
-    "static/js/2.80ba5deb.chunk.js",
+    "static/js/2.c79472dd.chunk.js",
     "static/css/main.c166ff17.chunk.css",
-    "static/js/main.169462b0.chunk.js"
+    "static/js/main.a3425608.chunk.js"
   ]
 }
