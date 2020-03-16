@@ -15,7 +15,6 @@ import { countries } from "./countries";
 
 function App() {
   const [showReorder, setShowReorder] = useState(false);
-  const [showConfirmClear, setShowConfirmClear] = useState(false);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const [reorderedSelectedItems, setReorderedSelectedItems] = useState<string[]>([]);
 
@@ -105,11 +104,9 @@ function App() {
     [reorderedSelectedItems, setReorderedSelectedItems]
   );
 
-  const handleClear = useCallback(() => setSelectedItems([]), [setSelectedItems]);
-
   const clearButton =
     selectedItems.length > 0 ? (
-      <Button icon="cross" minimal={true} onClick={() => setShowConfirmClear(true)} />
+      <Button icon="cross" minimal={true} onClick={() => setSelectedItems([])} />
     ) : (
       undefined
     );
@@ -141,31 +138,6 @@ function App() {
           Reorder
         </Button>
       </Card>
-      <Dialog
-        isOpen={showConfirmClear}
-        className="bp3-dark"
-        title="Clear Selection"
-        canOutsideClickClose={true}
-        onClose={() => setShowConfirmClear(false)}
-      >
-        <div className={Classes.DIALOG_BODY}>
-          <p>Are you sure you want to clear your selection?</p>
-        </div>
-        <div className={Classes.DIALOG_FOOTER}>
-          <div className={Classes.DIALOG_FOOTER_ACTIONS}>
-            <Button onClick={() => setShowConfirmClear(false)}>Cancel</Button>
-            <Button
-              intent={Intent.PRIMARY}
-              onClick={() => {
-                handleClear();
-                setShowConfirmClear(false);
-              }}
-            >
-              Clear Selection
-            </Button>
-          </div>
-        </div>
-      </Dialog>
 
       <Dialog
         isOpen={showReorder}
