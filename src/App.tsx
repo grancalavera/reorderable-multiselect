@@ -7,6 +7,7 @@ import {
   Icon,
   Intent,
   MenuItem,
+  ButtonGroup,
 } from "@blueprintjs/core";
 import { IItemRendererProps, ItemPredicate, MultiSelect } from "@blueprintjs/select";
 import React, { useCallback, useState } from "react";
@@ -118,6 +119,27 @@ function App() {
       undefined
     );
 
+  const reorderButton =
+    selectedItems.length > 1 ? (
+      <Button
+        icon="sort"
+        minimal={true}
+        onClick={(e: React.MouseEvent<HTMLElement>) => {
+          e.stopPropagation();
+          handleOpenReorder();
+        }}
+      />
+    ) : (
+      undefined
+    );
+
+  const rightElement = (
+    <ButtonGroup>
+      {reorderButton}
+      {clearButton}
+    </ButtonGroup>
+  );
+
   return (
     <>
       <Card className="app-layout" elevation={Elevation.TWO}>
@@ -129,20 +151,12 @@ function App() {
           itemRenderer={itemRenderer}
           onItemSelect={onItemSelect}
           popoverProps={{ minimal: true }}
-          tagInputProps={{ onRemove: onRemoveTag, rightElement: clearButton }}
+          tagInputProps={{ onRemove: onRemoveTag, rightElement }}
           itemsEqual={areDaysEqual}
           fill={true}
           resetOnSelect={true}
           className="app-days-select"
         />
-
-        <Button
-          disabled={selectedItems.length < 2}
-          minimal={true}
-          onClick={handleOpenReorder}
-        >
-          Reorder
-        </Button>
       </Card>
 
       <Dialog
