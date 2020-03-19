@@ -8,6 +8,7 @@ import {
   Intent,
   MenuItem,
   ButtonGroup,
+  Tooltip,
 } from "@blueprintjs/core";
 import { IItemRendererProps, ItemPredicate, MultiSelect } from "@blueprintjs/select";
 import React, { useCallback, useState } from "react";
@@ -107,28 +108,32 @@ function App() {
 
   const clearButton =
     selectedItems.length > 0 ? (
-      <Button
-        icon="cross"
-        minimal={true}
-        onClick={(e: React.MouseEvent<HTMLElement>) => {
-          e.stopPropagation();
-          setSelectedItems([]);
-        }}
-      />
+      <Tooltip content="Clear Selection">
+        <Button
+          icon="cross"
+          minimal={true}
+          onClick={(e: React.MouseEvent<HTMLElement>) => {
+            e.stopPropagation();
+            setSelectedItems([]);
+          }}
+        />
+      </Tooltip>
     ) : (
       undefined
     );
 
   const reorderButton =
     selectedItems.length > 1 ? (
-      <Button
-        icon="sort"
-        minimal={true}
-        onClick={(e: React.MouseEvent<HTMLElement>) => {
-          e.stopPropagation();
-          handleOpenReorder();
-        }}
-      />
+      <Tooltip content="Reorder Selection">
+        <Button
+          icon="sort"
+          minimal={true}
+          onClick={(e: React.MouseEvent<HTMLElement>) => {
+            e.stopPropagation();
+            handleOpenReorder();
+          }}
+        />
+      </Tooltip>
     ) : (
       undefined
     );
