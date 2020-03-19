@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "de68f3ff4b4b059c3e32f3ea322f329c",
+    "revision": "28161ac5731f028c5f30efd90bf42b95",
     "url": "/reorderable-multiselect/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/reorderable-multiselect/static/css/2.38516363.chunk.css"
   },
   {
-    "revision": "2548d86b827b4764b9bf",
+    "revision": "5d5b8f134de380f44d81",
     "url": "/reorderable-multiselect/static/css/main.c166ff17.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/reorderable-multiselect/static/js/2.c79472dd.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2548d86b827b4764b9bf",
-    "url": "/reorderable-multiselect/static/js/main.a3425608.chunk.js"
+    "revision": "5d5b8f134de380f44d81",
+    "url": "/reorderable-multiselect/static/js/main.022f4274.chunk.js"
   },
   {
     "revision": "b4b6b2156c15effc113c",
