@@ -106,7 +106,14 @@ function App() {
 
   const clearButton =
     selectedItems.length > 0 ? (
-      <Button icon="cross" minimal={true} onClick={() => setSelectedItems([])} />
+      <Button
+        icon="cross"
+        minimal={true}
+        onClick={(e: React.MouseEvent<HTMLElement>) => {
+          e.stopPropagation();
+          setSelectedItems([]);
+        }}
+      />
     ) : (
       undefined
     );
@@ -122,7 +129,6 @@ function App() {
           itemRenderer={itemRenderer}
           onItemSelect={onItemSelect}
           popoverProps={{ minimal: true }}
-          openOnKeyDown={true}
           tagInputProps={{ onRemove: onRemoveTag, rightElement: clearButton }}
           itemsEqual={areDaysEqual}
           fill={true}
