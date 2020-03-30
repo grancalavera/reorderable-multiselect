@@ -19,6 +19,7 @@ function App() {
   const [showReorder, setShowReorder] = useState(false);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const [reorderedSelectedItems, setReorderedSelectedItems] = useState<string[]>([]);
+  const [activeItem, setActiveItem] = useState<string | undefined>();
 
   const handleOpenReorder = useCallback(() => {
     setReorderedSelectedItems([...selectedItems]);
@@ -58,6 +59,7 @@ function App() {
 
   const onItemSelect = useCallback(
     (item: string) => {
+      setActiveItem(item);
       if (isItemSelected(item)) {
         deselectItem(item);
       } else {
@@ -159,8 +161,9 @@ function App() {
           tagInputProps={{ onRemove: onRemoveTag, rightElement }}
           itemsEqual={areDaysEqual}
           fill={true}
-          resetOnSelect={true}
+          resetOnSelect={false}
           className="app-days-select"
+          activeItem={activeItem}
         />
       </Card>
 
